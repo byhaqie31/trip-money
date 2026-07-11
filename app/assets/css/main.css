@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/*
+ * Trip Money design tokens, translated from design_handoff_trip_money/README.md.
+ * Every colour, font and radius in the app must come from here; opacity
+ * variants in the handoff (ink at .55/.5/.45/.4/.35, borders at .08/.14/.16)
+ * are expressed with slash opacity on these tokens, e.g. text-ink/55.
+ */
+@theme {
+  --color-*: initial;
+  --color-bg: oklch(0.9815 0.0067 97.35); /* #faf9f4 warm off-white page */
+  --color-card: oklch(1 0 0); /* #ffffff card surface */
+  --color-ink: oklch(0.2501 0.0149 166.35); /* #1b2420 primary text */
+  --color-lime: oklch(0.8759 0.1808 126.61); /* #b7eb5a accent, 3 uses only */
+  --color-lime-ink: oklch(0.2447 0.045 134.37); /* #17250e text on lime */
+  --color-chart-line: oklch(0.5278 0.1295 132.41); /* #4d7a1f */
+  --color-chart-fill: oklch(0.7807 0.1887 129.79); /* #8fce35, 22% -> 0% gradient */
+  --color-pass-panel: oklch(0.2708 0.021 164.85); /* #1d2a24 dark forest panel */
+  --color-pass-paper: oklch(0.9588 0.0168 88); /* #f6f1e5 ivory boarding pass */
+  --color-pass-ink: oklch(0.2119 0.0114 73.3); /* #1c1813 pass text */
+  --color-positive: oklch(0.5349 0.0973 150.7); /* #3e7d4f status/positive */
+  --color-negative: oklch(0.5593 0.1208 27.98); /* #b0554b error/negative */
+  --color-skeleton: oklch(0.9454 0.0109 95.17); /* #efede5 shimmer base */
+  --color-skeleton-hi: oklch(0.9698 0.0095 93.57); /* #f7f5ee shimmer highlight */
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Geist", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
+
+  --radius-card: 18px;
+  --radius-input: 12px;
+  --radius-btn: 12px;
+  --radius-pass: 14px;
+  --radius-panel: 20px;
+
+  /* Single design breakpoint: mobile below 900px, desktop grid at and above. */
+  --breakpoint-*: initial;
+  --breakpoint-desk: 900px;
+
+  --shadow-pass: 0 10px 36px oklch(0.1724 0.0148 162.64 / 0.45); /* rgba(10,18,14,.45) */
+
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  --animate-pass-in: pass-in 500ms ease-out;
+
+  @keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+  @keyframes pass-in {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-bg font-sans text-ink;
+  }
+}
+
+/* Skeleton shimmer block, per the handoff loading state. */
+@utility skeleton {
+  background: linear-gradient(90deg, var(--color-skeleton) 25%, var(--color-skeleton-hi) 50%, var(--color-skeleton) 75%);
+  background-size: 400px 100%;
+  animation: var(--animate-shimmer);
+}
+
+/* The chip row scrolls horizontally on mobile with its scrollbar hidden. */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

@@ -1,0 +1,13 @@
+# internal build docs, not for the public repo
+docs
+design_handoff_trip_money
+
+node_modules
+.nuxt
+.output
+dist
+.wrangler
+.data
+.DS_Store
+*.log
+.env
