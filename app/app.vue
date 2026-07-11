@@ -56,20 +56,17 @@ onUnmounted(() => clearInterval(tourTimer))
   <div class="min-h-dvh bg-bg">
     <TmHeader />
 
-    <!-- Hero: tall green card with the route map, then the picker -->
+    <!-- Hero: tall green card with the route map -->
     <section ref="heroSection" class="mx-auto max-w-[1440px] px-5 pt-4 desk:px-16 desk:pt-6">
       <TmHero />
-      <div class="mt-5">
-        <TmDestinationPicker />
-      </div>
     </section>
 
     <main class="mx-auto max-w-[1440px] px-5 pt-[30px] desk:px-16">
       <TmErrorCard v-if="status === 'error'" />
 
       <template v-else>
-        <!-- Rate + converter left, boarding pass aligned right -->
-        <div class="grid grid-cols-1 items-start gap-[18px] desk:grid-cols-[minmax(0,1fr)_minmax(320px,440px)] desk:gap-6">
+        <!-- Rate + converter left, boarding pass right at equal height -->
+        <div class="grid grid-cols-1 gap-[18px] desk:grid-cols-[minmax(0,1fr)_minmax(320px,440px)] desk:gap-6">
           <div v-if="status === 'loading'" class="flex min-w-0 flex-col gap-[18px]">
             <TmSkeletons />
           </div>
@@ -77,8 +74,8 @@ onUnmounted(() => clearInterval(tourTimer))
             <TmRateCard />
             <TmConverter />
           </div>
-          <div class="min-w-0 desk:sticky desk:top-6">
-            <div v-if="status === 'loading'" class="rounded-card border border-ink/8 bg-card px-[30px] py-8">
+          <div class="min-w-0">
+            <div v-if="status === 'loading'" class="h-full rounded-card border border-ink/8 bg-card px-[30px] py-8">
               <div class="skeleton h-[200px] rounded-input" />
             </div>
             <TmBoardingPass v-else />

@@ -56,12 +56,14 @@ async function share(): Promise<void> {
 </script>
 
 <template>
-  <section class="rounded-panel bg-pass-panel px-6 pb-[26px] pt-7">
-    <div class="mb-4 text-center font-mono text-[11px] uppercase tracking-[0.12em] text-pass-paper/50">Your boarding pass</div>
+  <!-- h-full + my-auto card: the panel stretches to the left column's
+       height, the pass floats centered between title and buttons. -->
+  <section class="flex h-full flex-col rounded-panel bg-pass-panel px-6 pb-[26px] pt-7">
+    <div class="mb-4 flex-none text-center font-mono text-[11px] uppercase tracking-[0.12em] text-pass-paper/50">Your boarding pass</div>
 
     <div
       ref="passEl"
-      class="tm-pass rounded-pass bg-[var(--paper)] text-[color:var(--ink)] shadow-pass [animation:var(--animate-pass-in)]"
+      class="tm-pass my-auto rounded-pass bg-[var(--paper)] text-[color:var(--ink)] shadow-pass [animation:var(--animate-pass-in)]"
       :class="{ 'tm-pass--business': travelClass === 'business', 'tm-pass--first': travelClass === 'first' }"
     >
       <div class="flex items-baseline justify-between px-[22px] pt-5">
@@ -134,7 +136,7 @@ async function share(): Promise<void> {
       </div>
     </div>
 
-    <div class="mt-[18px] flex flex-col gap-[10px]">
+    <div class="mt-[18px] flex flex-none flex-col gap-[10px]">
       <button
         type="button"
         class="flex h-[52px] cursor-pointer items-center justify-center rounded-btn bg-lime text-[15px] font-bold text-lime-ink [transition:transform_120ms_ease] active:scale-[0.99]"

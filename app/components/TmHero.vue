@@ -57,9 +57,9 @@ function resumeTicker(): void {
     <div class="relative flex flex-1 flex-col items-center justify-center px-6 py-14 text-center desk:py-20">
       <p class="font-normal text-[12.5px] tracking-[0.04em] text-pass-paper/55">berapa rate hari ni?</p>
 
-      <h1 class="mt-4 font-display text-[34px] font-bold leading-[1.15] tracking-[-0.02em] text-pass-paper text-pretty desk:text-[56px]">
-        Now boarding:
-        <span class="relative ml-2 inline-block overflow-hidden rounded-[10px] bg-lime px-[12px] text-lime-ink desk:ml-3">
+      <h1 class="mt-4 flex flex-wrap items-center justify-center gap-x-2 gap-y-2 font-display text-[34px] font-bold leading-[1.15] tracking-[-0.02em] text-pass-paper desk:gap-x-3 desk:text-[56px]">
+        <span>Now boarding:</span>
+        <span class="relative inline-block overflow-hidden rounded-[10px] bg-lime px-[12px] text-lime-ink">
           <Transition :css="false" @enter="onWordEnter" @leave="onWordLeave">
             <span :key="shown.city" class="inline-block whitespace-nowrap">{{ shown.city }}</span>
           </Transition>
