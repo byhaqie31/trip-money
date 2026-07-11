@@ -51,10 +51,10 @@ function resumeTicker(): void {
 </script>
 
 <template>
-  <section class="relative overflow-hidden rounded-panel bg-pass-panel">
+  <section class="relative flex min-h-[480px] flex-col overflow-hidden rounded-panel bg-pass-panel desk:min-h-[640px]">
     <TmHeroMap />
 
-    <div class="relative flex flex-col items-center px-6 pb-12 pt-12 text-center desk:pb-16 desk:pt-20">
+    <div class="relative flex flex-1 flex-col items-center justify-center px-6 py-14 text-center desk:py-20">
       <p class="font-normal text-[12.5px] tracking-[0.04em] text-pass-paper/55">berapa rate hari ni?</p>
 
       <h1 class="mt-4 font-display text-[34px] font-bold leading-[1.15] tracking-[-0.02em] text-pass-paper text-pretty desk:text-[56px]">

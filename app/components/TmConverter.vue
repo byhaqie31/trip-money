@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const { destination, budgetRm, budgetSen, setBudgetRm } = useTrip()
+import { TRAVEL_CLASSES } from '~/composables/useTrip'
+
+const { destination, budgetRm, budgetSen, travelClass, setBudgetRm, setTravelClass } = useTrip()
 const { stopTour } = useTour()
 const rates = useRates()
 const asOfDate = rates.asOfDate
@@ -29,6 +31,20 @@ const story = computed(() => {
 <template>
   <section class="rounded-card border border-ink/8 bg-card px-[30px] py-8">
     <div class="mb-[10px] text-[13px] font-normal tracking-[0.02em] text-ink/55">Your trip budget</div>
+
+    <!-- Traveller class: presets the budget, pass switches paper to match -->
+    <div class="mb-3 grid grid-cols-3 rounded-full border border-ink/14 bg-bg p-[3px]">
+      <button
+        v-for="c in TRAVEL_CLASSES"
+        :key="c.key"
+        type="button"
+        class="cursor-pointer rounded-full py-[7px] text-[13px] font-medium [transition:background-color_150ms_ease]"
+        :class="travelClass === c.key ? 'bg-ink text-bg' : 'text-ink/55'"
+        @click="setTravelClass(c.key)"
+      >
+        {{ c.label }}
+      </button>
+    </div>
 
     <div class="flex items-center gap-3 rounded-input border-[1.5px] border-ink/16 bg-bg px-[18px] py-[14px] transition-colors focus-within:border-ink">
       <span class="font-mono text-[15px] text-ink/45">RM</span>

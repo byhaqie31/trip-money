@@ -23,6 +23,13 @@
   --color-skeleton: oklch(0.9454 0.0109 95.17); /* #efede5 shimmer base */
   --color-skeleton-hi: oklch(0.9698 0.0095 93.57); /* #f7f5ee shimmer highlight */
 
+  /* Traveller class pass papers */
+  --color-gold: oklch(0.7388 0.103 84.17); /* #c9a55a champagne gold */
+  --color-gold-deep: oklch(0.6022 0.1027 86.15); /* #9c7c2e foil gold */
+  --color-pass-biz: oklch(0.2607 0.0096 88.78); /* #26241f charcoal paper */
+  --color-pass-first: oklch(0.8898 0.0523 86.24); /* #ead9b4 champagne paper */
+  --color-pass-first-ink: oklch(0.3365 0.0539 81.63); /* #453413 bronze ink */
+
   --font-display: "Pally", system-ui, -apple-system, sans-serif;
   --font-sans: "Pally", system-ui, -apple-system, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
@@ -71,6 +78,33 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+/* Traveller class themes for the boarding pass: token swaps only, the
+   markup never changes. Economy is the base ivory pass. */
+.tm-pass {
+  --paper: var(--color-pass-paper);
+  --ink: var(--color-pass-ink);
+  --muted: color-mix(in oklab, var(--color-pass-ink) 50%, transparent);
+  --rule: color-mix(in oklab, var(--color-pass-ink) 25%, transparent);
+  --code: var(--color-pass-ink);
+  --barcode: var(--color-pass-ink);
+}
+.tm-pass--business {
+  --paper: var(--color-pass-biz);
+  --ink: var(--color-pass-paper);
+  --muted: color-mix(in oklab, var(--color-gold) 80%, transparent);
+  --rule: color-mix(in oklab, var(--color-gold) 50%, transparent);
+  --code: var(--color-pass-paper);
+  --barcode: color-mix(in oklab, var(--color-gold) 90%, transparent);
+}
+.tm-pass--first {
+  --paper: var(--color-pass-first);
+  --ink: var(--color-pass-first-ink);
+  --muted: color-mix(in oklab, var(--color-gold-deep) 75%, transparent);
+  --rule: color-mix(in oklab, var(--color-gold-deep) 55%, transparent);
+  --code: var(--color-gold-deep);
+  --barcode: var(--color-gold-deep);
 }
 
 /* Everything renders static and fully functional without motion. */

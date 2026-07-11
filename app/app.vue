@@ -27,19 +27,20 @@ onMounted(() => {
     history.replaceState(null, '', url)
   })
 
-  // Hero auto-tour: every 5s until any interaction stops it, never restarted.
+  // Hero auto-tour: every 5s. Real interactions stop it permanently;
+  // scrolling away only pauses it until the hero is back in view.
+  const heroInView = ref(true)
   if (!stopped.value && !prefersReducedMotion()) {
     tourTimer = setInterval(() => {
-      if (stopped.value) return
+      if (stopped.value || !heroInView.value) return
       const at = TOUR_ORDER.indexOf(selectedCode.value as (typeof TOUR_ORDER)[number])
       selectedCode.value = TOUR_ORDER[(at + 1) % TOUR_ORDER.length]!
     }, 5000)
   }
 
-  // Scrolling past the hero counts as interaction.
   if (heroSection.value) {
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry && !entry.isIntersecting) stopTour()
+      heroInView.value = entry?.isIntersecting ?? true
     })
     observer.observe(heroSection.value)
   }
@@ -55,14 +56,11 @@ onUnmounted(() => clearInterval(tourTimer))
   <div class="min-h-dvh bg-bg">
     <TmHeader />
 
-    <!-- Hero: green card with the route map (near full bleed so the map
-         reads big), then the picker in the regular container -->
-    <section ref="heroSection" class="pt-3 desk:pt-4">
-      <div class="px-2 desk:px-4">
-        <TmHero />
-      </div>
-      <div class="mx-auto mt-5 max-w-[1440px] px-5 desk:px-16">
-        <TmChips />
+    <!-- Hero: tall green card with the route map, then the picker -->
+    <section ref="heroSection" class="mx-auto max-w-[1440px] px-5 pt-4 desk:px-16 desk:pt-6">
+      <TmHero />
+      <div class="mt-5">
+        <TmDestinationPicker />
       </div>
     </section>
 
