@@ -18,7 +18,7 @@ const cards = computed(() =>
 <template>
   <section v-if="cards.length && budgetRm > 0" class="rounded-card border border-ink/8 bg-card px-[30px] py-8">
     <div class="mb-4 text-[13px] text-ink/55">Your RM{{ budgetRm.toLocaleString('en-MY') }} elsewhere</div>
-    <div class="no-scrollbar flex gap-[10px] overflow-x-auto desk:grid desk:grid-cols-2 desk:overflow-visible">
+    <div class="no-scrollbar flex gap-[10px] overflow-x-auto desk:grid desk:grid-cols-4 desk:gap-4 desk:overflow-visible">
       <button
         v-for="c in cards"
         :key="c.d.code"
