@@ -2,6 +2,7 @@
   "name": "trip-money",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@11.11.0",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",

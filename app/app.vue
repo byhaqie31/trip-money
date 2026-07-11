@@ -66,25 +66,25 @@ onMounted(() => {
       </div>
 
       <!-- One grid, two stories: desktop pins the pass beside the rate stack;
-           mobile runs rate, compare, leaderboard, trend, then the pass as the
-           closing beat. -->
+           mobile runs rate, budget, then the pass right after, then the
+           comparison, leaderboard and trend. -->
       <div v-else class="grid grid-cols-1 gap-[18px] desk:grid-cols-[minmax(0,1fr)_minmax(320px,440px)] desk:gap-6">
         <div class="order-1 flex min-w-0 flex-col gap-[18px] desk:col-start-1 desk:row-start-1">
           <TmRateCard />
           <TmConverter />
         </div>
 
-        <div class="order-2 min-w-0 desk:order-3 desk:col-span-2">
+        <div class="order-2 min-w-0 desk:col-start-2 desk:row-start-1">
+          <TmBoardingPass />
+        </div>
+
+        <div class="order-3 min-w-0 desk:col-span-2">
           <TmCompareStrip />
         </div>
 
-        <div class="order-3 grid min-w-0 grid-cols-1 items-start gap-[18px] desk:order-4 desk:col-span-2 desk:grid-cols-2 desk:gap-6">
+        <div class="order-4 grid min-w-0 grid-cols-1 items-start gap-[18px] desk:col-span-2 desk:grid-cols-2 desk:gap-6">
           <TmLeaderboard />
           <TmTrend />
-        </div>
-
-        <div class="order-4 min-w-0 desk:order-2 desk:col-start-2 desk:row-start-1">
-          <TmBoardingPass />
         </div>
       </div>
     </main>
