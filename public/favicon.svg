@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Trip Money mark: lime boarding pass on an ink tile -->
+  <rect width="64" height="64" rx="14" fill="#1b2420"/>
+  <rect x="10" y="20" width="44" height="24" rx="5" fill="#b7eb5a"/>
+  <!-- route: KUL to somewhere -->
+  <circle cx="17" cy="32" r="2.2" fill="#17250e"/>
+  <path d="M20.5 32h11" stroke="#17250e" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2.6 2.2"/>
+  <path d="M33 28.6 37.4 32 33 35.4z" fill="#17250e"/>
+  <!-- perforation notches -->
+  <circle cx="42" cy="20" r="3.4" fill="#1b2420"/>
+  <circle cx="42" cy="44" r="3.4" fill="#1b2420"/>
+  <!-- stub barcode -->
+  <rect x="46.5" y="26.5" width="2" height="11" rx="0.8" fill="#17250e"/>
+  <rect x="50.2" y="26.5" width="1.4" height="11" rx="0.7" fill="#17250e"/>
+</svg>
