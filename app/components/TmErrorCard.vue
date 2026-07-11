@@ -7,7 +7,7 @@ const lastAttempt = rates.lastAttempt
   <div class="max-w-[560px] rounded-2xl border border-negative/35 bg-card px-[26px] py-7">
     <div class="flex items-center gap-2">
       <span class="inline-block size-[7px] rounded-full bg-negative" />
-      <span class="text-[15px] font-semibold">Rates did not load</span>
+      <span class="text-[15px] font-bold">Rates did not load</span>
     </div>
     <p class="mt-2 text-[13.5px] leading-[1.55] text-ink/60 text-pretty">
       BNM's data service is not answering right now. Your last attempt was a moment ago.

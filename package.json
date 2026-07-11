@@ -9,6 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "gsap": "^3.15.0",
     "html-to-image": "^1.11.13",
     "nuxt": "^4.0.0",
     "vue": "^3.5.0"

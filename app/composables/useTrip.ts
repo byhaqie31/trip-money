@@ -9,8 +9,13 @@ export function useTrip() {
     () => destinationByCode(selectedCode.value) ?? DESTINATIONS[0]!,
   )
 
+  const { stopTour } = useTour()
+
+  /** User-initiated selection; also permanently stops the hero auto-tour. */
   function select(code: string): void {
-    if (destinationByCode(code)) selectedCode.value = code
+    if (!destinationByCode(code)) return
+    stopTour()
+    selectedCode.value = code
   }
 
   /** Whole ringgit for the input field; sen stays the source of truth. */

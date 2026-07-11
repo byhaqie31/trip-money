@@ -21,7 +21,7 @@ const visible = computed(() => (expanded.value ? entries.value : entries.value.s
 <template>
   <section class="rounded-card border border-ink/8 bg-card px-[30px] py-8">
     <div class="mb-2 flex items-center justify-between gap-4">
-      <h2 class="text-[15px] font-semibold">Where the ringgit is winning</h2>
+      <h2 class="text-[15px] font-bold">Where the ringgit is winning</h2>
       <div class="flex flex-none rounded-full border border-ink/14 bg-bg p-[3px]">
         <button
           v-for="d in [30, 90] as const"

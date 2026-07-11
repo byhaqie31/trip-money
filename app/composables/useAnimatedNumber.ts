@@ -21,13 +21,18 @@ export function useAnimatedNumber(target: () => number | null, duration = 600) {
 
   onMounted(() => {
     const to = target()
-    if (to != null) animate(to * 0.92, to)
+    if (to == null) return
+    if (prefersReducedMotion()) {
+      display.value = to
+      return
+    }
+    animate(to * 0.92, to)
   })
 
   watch(target, (to) => {
     if (to == null) {
       display.value = null
-    } else if (import.meta.client) {
+    } else if (import.meta.client && !prefersReducedMotion()) {
       animate(display.value ?? to * 0.92, to)
     } else {
       display.value = to

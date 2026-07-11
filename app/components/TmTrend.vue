@@ -48,7 +48,7 @@ const verdict = computed(() => {
 <template>
   <section v-if="geom" class="rounded-card border border-ink/8 bg-card px-[30px] pb-6 pt-8">
     <div class="mb-4 flex items-baseline justify-between">
-      <div class="text-[13px] text-ink/55">Last 90 days</div>
+      <div class="text-[13px] font-normal tracking-[0.02em] text-ink/55">Last 90 days</div>
       <div class="font-mono text-[10px] text-ink/35">{{ destination.cur }} per RM 1</div>
     </div>
 

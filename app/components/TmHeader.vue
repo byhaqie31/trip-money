@@ -14,7 +14,7 @@ const { status } = useRates()
           <circle cx="17" cy="47" r="9" class="fill-lime" />
           <circle cx="17" cy="47" r="4.6" fill="none" class="stroke-ink" stroke-width="2.4" />
         </svg>
-        <span class="font-display text-[20px] font-semibold tracking-[-0.01em] text-lime-ink">Trip Money</span>
+        <span class="font-display text-[20px] font-bold tracking-[-0.01em] text-lime-ink">Trip Money</span>
       </div>
 
       <div class="inline-flex items-center gap-2 rounded-full border border-lime-ink/25 px-3 py-[6px]">

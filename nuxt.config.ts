@@ -27,11 +27,11 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://cdn.fontshare.com', crossorigin: '' },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap',
+          href: 'https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap',
         },
         {
           rel: 'stylesheet',
-          href: 'https://api.fontshare.com/v2/css?f[]=bespoke-serif@400,401,500,501,700&display=swap',
+          href: 'https://api.fontshare.com/v2/css?f[]=pally@400,500,700&display=swap',
         },
       ],
     },

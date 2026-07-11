@@ -60,7 +60,7 @@ async function share(): Promise<void> {
 
       <div class="flex items-center gap-4 px-[22px] pt-[18px]">
         <div>
-          <div class="font-display text-[42px] font-semibold leading-none tracking-[-0.01em]">KUL</div>
+          <div class="font-display text-[42px] font-bold leading-none tracking-[-0.01em]">KUL</div>
           <div class="mt-[5px] font-mono text-[9px] tracking-[0.1em] text-pass-ink/50">KUALA LUMPUR</div>
         </div>
         <div class="flex min-w-0 flex-1 items-center gap-2">
@@ -69,7 +69,7 @@ async function share(): Promise<void> {
           <div class="h-px flex-1 bg-pass-ink/25" />
         </div>
         <div class="text-right">
-          <div class="font-display text-[42px] font-semibold leading-none tracking-[-0.01em]">{{ destination.airport }}</div>
+          <div class="font-display text-[42px] font-bold leading-none tracking-[-0.01em]">{{ destination.airport }}</div>
           <div class="mt-[5px] font-mono text-[9px] tracking-[0.1em] text-pass-ink/50">{{ destination.airportCity }}</div>
         </div>
       </div>
@@ -122,7 +122,7 @@ async function share(): Promise<void> {
     <div class="mt-[18px] flex flex-col gap-[10px]">
       <button
         type="button"
-        class="flex h-[52px] cursor-pointer items-center justify-center rounded-btn bg-lime text-[15px] font-semibold text-lime-ink [transition:transform_120ms_ease] active:scale-[0.99]"
+        class="flex h-[52px] cursor-pointer items-center justify-center rounded-btn bg-lime text-[15px] font-bold text-lime-ink [transition:transform_120ms_ease] active:scale-[0.99]"
         @click="save"
       >
         {{ saved ? 'Saved ✓' : 'Save boarding pass' }}

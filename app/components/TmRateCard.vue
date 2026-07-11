@@ -6,20 +6,20 @@ const asOfDate = rates.asOfDate
 const latest = computed(() => rates.latest(destination.value.code))
 const deltaInfo = computed(() => rates.delta(destination.value.code))
 const percentile = computed(() => rates.timingPercentile(destination.value.code))
-const perRm = useAnimatedNumber(() => (latest.value ? 1 / latest.value.rate : null))
+const perRm = useAnimatedNumber(() => (latest.value ? 1 / latest.value.rate : null), 500)
 </script>
 
 <template>
   <section class="rounded-card border border-ink/8 bg-card px-[30px] py-8">
     <div class="mb-[14px] flex items-center justify-between">
-      <div class="text-[13px] text-ink/55">RM 1 buys you</div>
+      <div class="text-[13px] font-normal tracking-[0.02em] text-ink/55">RM 1 buys you</div>
       <div v-if="deltaInfo" class="flex items-center gap-[5px] rounded-full bg-lime px-[11px] py-[5px] text-lime-ink">
         <span class="text-[10px]">{{ deltaInfo.pct >= 0 ? '▲' : '▼' }}</span>
         <span class="font-mono text-[11.5px] font-medium">{{ Math.abs(deltaInfo.pct).toFixed(2) }}%</span>
       </div>
     </div>
 
-    <div class="font-display text-[58px] font-semibold leading-none tracking-[-0.03em] desk:text-[80px]">
+    <div class="font-display text-[58px] font-bold leading-none tracking-[-0.03em] desk:text-[80px]">
       <template v-if="perRm != null">{{ destination.sym }}{{ fmtAmount(perRm) }}</template>
     </div>
 
