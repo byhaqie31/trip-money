@@ -23,7 +23,7 @@
   --color-skeleton: oklch(0.9454 0.0109 95.17); /* #efede5 shimmer base */
   --color-skeleton-hi: oklch(0.9698 0.0095 93.57); /* #f7f5ee shimmer highlight */
 
-  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-display: "Bespoke Serif", ui-serif, Georgia, serif;
   --font-sans: "Geist", system-ui, -apple-system, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SF Mono", monospace;
 

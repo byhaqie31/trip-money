@@ -5,7 +5,7 @@ const { selectedCode, select } = useTrip()
 </script>
 
 <template>
-  <div class="no-scrollbar flex gap-2 overflow-x-auto px-5 pb-2 pt-1 desk:max-w-[1100px] desk:flex-wrap desk:gap-[9px] desk:overflow-visible desk:px-16">
+  <div class="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 pb-2 pt-1 desk:mx-0 desk:max-w-[1100px] desk:flex-wrap desk:gap-[9px] desk:overflow-visible desk:px-0">
     <button
       v-for="d in DESTINATIONS"
       :key="d.code"
