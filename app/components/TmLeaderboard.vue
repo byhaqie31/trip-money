@@ -27,15 +27,16 @@ const visible = computed(() => (expanded.value ? entries.value : entries.value.s
           v-for="d in [30, 90] as const"
           :key="d"
           type="button"
+          :aria-pressed="windowDays === d"
           class="cursor-pointer rounded-full px-3 py-[5px] font-mono text-[11.5px] [transition:background-color_150ms_ease]"
-          :class="windowDays === d ? 'bg-ink text-bg' : 'text-ink/55'"
+          :class="windowDays === d ? 'bg-ink text-bg' : 'text-ink/70'"
           @click="windowDays = d"
         >
           {{ d }}d
         </button>
       </div>
     </div>
-    <p class="text-[12.5px] text-ink/50">How much further your ringgit goes than {{ windowDays }} days ago.</p>
+    <p class="text-[12.5px] text-ink/65">How much further your ringgit goes than {{ windowDays }} days ago.</p>
 
     <ul class="mt-3">
       <li v-for="(e, i) in visible" :key="e.currency" class="border-t border-ink/8 first:border-t-0">

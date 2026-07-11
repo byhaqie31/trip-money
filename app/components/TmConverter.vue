@@ -30,19 +30,24 @@ const story = computed(() => {
 
 <template>
   <section class="rounded-card border border-ink/8 bg-card px-[30px] py-8">
-    <div class="mb-[10px] text-[13px] font-normal tracking-[0.02em] text-ink/55">Your trip budget</div>
+    <div class="mb-[10px] text-[13px] font-normal tracking-[0.02em] text-ink/70">Your trip budget</div>
 
-    <!-- Traveller class: presets the budget, pass switches paper to match -->
+    <!-- Traveller class: presets the budget (shown on each segment), pass
+         switches paper to match. A typed budget is never overwritten. -->
     <div class="mb-3 grid grid-cols-3 rounded-full border border-ink/14 bg-bg p-[3px]">
       <button
         v-for="c in TRAVEL_CLASSES"
         :key="c.key"
         type="button"
-        class="cursor-pointer rounded-full py-[7px] text-[13px] font-medium [transition:background-color_150ms_ease]"
-        :class="travelClass === c.key ? 'bg-ink text-bg' : 'text-ink/55'"
+        :aria-pressed="travelClass === c.key"
+        class="flex cursor-pointer flex-col items-center rounded-full py-[6px] [transition:background-color_150ms_ease]"
+        :class="travelClass === c.key ? 'bg-ink text-bg' : 'text-ink/70'"
         @click="setTravelClass(c.key)"
       >
-        {{ c.label }}
+        <span class="text-[13px] font-medium leading-[1.2]">{{ c.label }}</span>
+        <span class="font-mono text-[9.5px] leading-[1.3]" :class="travelClass === c.key ? 'text-bg/70' : 'text-ink/45'">
+          RM{{ (c.presetRm / 1000) }}k
+        </span>
       </button>
     </div>
 
@@ -61,7 +66,7 @@ const story = computed(() => {
     </div>
 
     <div class="mt-[22px]">
-      <div class="text-[13px] font-normal tracking-[0.02em] text-ink/55">In {{ destination.city }}, that is</div>
+      <div class="text-[13px] font-normal tracking-[0.02em] text-ink/70">In {{ destination.city }}, that is</div>
       <div class="mt-[6px] font-mono text-[38px] font-medium tracking-[-0.01em] [overflow-wrap:anywhere]">
         <template v-if="converted != null">{{ destination.sym }}{{ fmtAmount(converted) }}</template>
         <template v-else>&nbsp;</template>

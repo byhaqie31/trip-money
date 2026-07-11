@@ -11,14 +11,15 @@ const perRm = useAnimatedNumber(() => (latest.value ? 1 / latest.value.rate : nu
 
 <template>
   <section class="rounded-card border border-ink/8 bg-card px-[30px] py-8">
-    <div class="mb-2 text-[13px] font-normal tracking-[0.02em] text-ink/55">Choose your destination</div>
+    <div class="mb-2 text-[13px] font-normal tracking-[0.02em] text-ink/70">Choose your destination</div>
     <TmDestinationSelect />
 
     <div class="mb-[14px] mt-7 flex items-center justify-between">
-      <div class="text-[13px] font-normal tracking-[0.02em] text-ink/55">RM 1 buys you</div>
+      <div class="text-[13px] font-normal tracking-[0.02em] text-ink/70">RM 1 buys you</div>
       <div v-if="deltaInfo" class="flex items-center gap-[5px] rounded-full bg-lime px-[11px] py-[5px] text-lime-ink">
-        <span class="text-[10px]">{{ deltaInfo.pct >= 0 ? '▲' : '▼' }}</span>
+        <span aria-hidden="true" class="text-[10px]">{{ deltaInfo.pct >= 0 ? '▲' : '▼' }}</span>
         <span class="font-mono text-[11.5px] font-medium">{{ Math.abs(deltaInfo.pct).toFixed(2) }}%</span>
+        <span class="sr-only">{{ deltaInfo.pct >= 0 ? 'ringgit stronger' : 'ringgit weaker' }} vs previous day</span>
       </div>
     </div>
 
@@ -29,7 +30,7 @@ const perRm = useAnimatedNumber(() => (latest.value ? 1 / latest.value.rate : nu
       </div>
 
       <div class="mt-[14px] desk:mt-0 desk:max-w-[300px] desk:text-right">
-        <div v-if="latest" class="font-mono text-[11.5px] text-ink/50">
+        <div v-if="latest" class="font-mono text-[11.5px] text-ink/65">
           {{ destination.sym }}1 = RM {{ fmtRate(latest.rate) }} · middle rate
         </div>
 

@@ -101,7 +101,8 @@
 .tm-pass--first {
   --paper: var(--color-pass-first);
   --ink: var(--color-pass-first-ink);
-  --muted: color-mix(in oklab, var(--color-gold-deep) 75%, transparent);
+  /* labels stay readable bronze; gold is reserved for rules and foil */
+  --muted: color-mix(in oklab, var(--color-pass-first-ink) 75%, transparent);
   --rule: color-mix(in oklab, var(--color-gold-deep) 55%, transparent);
   --code: var(--color-gold-deep);
   --barcode: var(--color-gold-deep);

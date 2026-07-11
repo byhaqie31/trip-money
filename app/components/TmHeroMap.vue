@@ -1,12 +1,13 @@
 <script setup lang="ts">
 // Real world-map design behind the hero card: land shapes generated at build
 // time from world-atlas (no tile API, no keys), destinations at their real
-// coordinates, one dotted route KUL -> selected. Static under reduced motion.
+// coordinates, one dotted route KUL -> the shown city (which may be the
+// tour/hover preview, not the selection). Static under reduced motion.
 import { gsap } from 'gsap'
 import { DESTINATIONS } from '~~/config/destinations'
 import { WORLD_LAND_PATH } from '~/utils/worldLand'
 
-const { destination } = useTrip()
+const props = defineProps<{ code: string }>()
 
 /** Approximate airport lon/lat per currency code, plus KUL as origin. */
 const GEO: Record<string, [number, number]> = {
@@ -41,7 +42,7 @@ const dots = DESTINATIONS.map(d => {
 })
 
 const arcPath = computed(() => {
-  const geo = GEO[destination.value.code]
+  const geo = GEO[props.code]
   if (!geo) return ''
   const to = { x: X(geo[0]), y: Y(geo[1]) }
   const lift = Math.min(70, Math.max(20, Math.hypot(to.x - kul.x, to.y - kul.y) * 0.22))
@@ -81,8 +82,8 @@ watch(arcPath, () => nextTick(draw))
       :key="d.code"
       :cx="d.x"
       :cy="d.y"
-      :r="d.code === destination.code ? 4.2 : 2.2"
-      :class="d.code === destination.code ? 'fill-lime' : 'fill-pass-paper/30'"
+      :r="d.code === props.code ? 4.2 : 2.2"
+      :class="d.code === props.code ? 'fill-lime' : 'fill-pass-paper/30'"
     />
 
     <circle :cx="kul.x" :cy="kul.y" r="3.2" class="fill-pass-paper/80" />

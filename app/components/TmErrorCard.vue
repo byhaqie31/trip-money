@@ -10,7 +10,7 @@ const lastAttempt = rates.lastAttempt
       <span class="text-[15px] font-bold">Rates did not load</span>
     </div>
     <p class="mt-2 text-[13.5px] leading-[1.55] text-ink/60 text-pretty">
-      BNM's data service is not answering right now. Your last attempt was a moment ago.
+      BNM's data service is not answering right now. Nothing is lost, try again in a moment.
     </p>
     <p v-if="lastAttempt" class="mt-[10px] font-mono text-[10.5px] text-ink/40">last attempt {{ fmtTimeMYT(lastAttempt) }}</p>
     <button

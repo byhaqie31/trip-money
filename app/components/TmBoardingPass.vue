@@ -59,7 +59,8 @@ async function share(): Promise<void> {
   <!-- h-full + my-auto card: the panel stretches to the left column's
        height, the pass floats centered between title and buttons. -->
   <section class="flex h-full flex-col rounded-panel bg-pass-panel px-6 pb-[26px] pt-7">
-    <div class="mb-4 flex-none text-center font-mono text-[11px] uppercase tracking-[0.12em] text-pass-paper/50">Your boarding pass</div>
+    <h2 class="mb-4 flex-none text-center font-mono text-[11px] font-normal uppercase tracking-[0.12em] text-pass-paper/50">Your boarding pass</h2>
+    <span role="status" class="sr-only">{{ saved ? 'Boarding pass saved' : shared ? 'Link copied' : '' }}</span>
 
     <div
       ref="passEl"

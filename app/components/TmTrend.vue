@@ -43,12 +43,37 @@ const verdict = computed(() => {
   const stronger = latest.rate < pts30[0]!.rate
   return `The ringgit is ${stronger ? 'stronger' : 'weaker'} against the ${destination.value.cur} than 30 days ago.`
 })
+
+// Feature C companion: distribution of the last 90 days, today's bin marked.
+// Same plotting convention as the trend: right = stronger ringgit.
+const BINS = 16
+const histogram = computed(() => {
+  const pts = points.value
+  if (pts.length < 8) return null
+  const vals = pts.map(p => 1 / p.rate)
+  const today = vals[vals.length - 1]!
+  const min = Math.min(...vals)
+  const span = (Math.max(...vals) - min) || 1
+  const counts = Array.from({ length: BINS }, () => 0)
+  for (const v of vals) {
+    counts[Math.min(BINS - 1, Math.floor(((v - min) / span) * BINS))]!++
+  }
+  const maxCount = Math.max(...counts)
+  return {
+    todayBin: Math.min(BINS - 1, Math.floor(((today - min) / span) * BINS)),
+    bars: counts.map((count, i) => ({
+      x: (700 / BINS) * i + 3,
+      width: 700 / BINS - 6,
+      height: Math.max(2, (count / maxCount) * 60),
+    })),
+  }
+})
 </script>
 
 <template>
   <section v-if="geom" class="rounded-card border border-ink/8 bg-card px-[30px] pb-6 pt-8">
     <div class="mb-4 flex items-baseline justify-between">
-      <div class="text-[13px] font-normal tracking-[0.02em] text-ink/55">Last 90 days</div>
+      <div class="text-[13px] font-normal tracking-[0.02em] text-ink/70">Last 90 days</div>
       <div class="font-mono text-[10px] text-ink/35">{{ destination.cur }} per RM 1</div>
     </div>
 
@@ -68,5 +93,29 @@ const verdict = computed(() => {
     </svg>
 
     <p v-if="verdict" class="mt-3 text-[13.5px] leading-[1.5] text-ink/60 text-pretty">{{ verdict }}</p>
+
+    <template v-if="histogram">
+      <div class="mb-3 mt-6 flex items-baseline justify-between border-t border-ink/8 pt-5">
+        <div class="text-[13px] font-normal tracking-[0.02em] text-ink/70">Where today sits</div>
+        <div class="font-mono text-[10px] text-ink/45">90 day spread</div>
+      </div>
+      <svg viewBox="0 0 700 78" class="block w-full" role="img" :aria-label="`Distribution of ${destination.cur} per RM 1 over the last 90 days with today marked`">
+        <rect
+          v-for="(bar, i) in histogram.bars"
+          :key="i"
+          :x="bar.x"
+          :y="66 - bar.height"
+          :width="bar.width"
+          :height="bar.height"
+          rx="2"
+          :class="i === histogram.todayBin ? 'fill-chart-line' : 'fill-ink/10'"
+        />
+        <text x="0" y="77" class="fill-ink/45 font-mono text-[9.5px]">weaker ringgit</text>
+        <text x="700" y="77" text-anchor="end" class="fill-ink/45 font-mono text-[9.5px]">stronger ringgit</text>
+      </svg>
+      <p class="mt-2 text-[12.5px] leading-[1.5] text-ink/60 text-pretty">
+        Each bar counts days at that level in the last 90 days. The green bar is where today sits.
+      </p>
+    </template>
   </section>
 </template>

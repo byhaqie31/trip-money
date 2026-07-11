@@ -2,6 +2,7 @@
 docs
 design_handoff_trip_money
 .claude
+.impeccable
 
 node_modules
 .nuxt

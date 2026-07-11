@@ -37,15 +37,20 @@ export function useTrip() {
   }
 
   /**
-   * Picking a class presets the budget, but later budget edits never reset
-   * the class. Counts as interaction, so it also stops the hero tour.
+   * Picking a class presets the budget, but never destroys a hand-typed
+   * amount: the preset only applies while the budget is still the default
+   * or another class preset. Budget edits never reset the class. Counts as
+   * interaction, so it also stops the hero tour.
    */
   function setTravelClass(next: TravelClass): void {
     const entry = TRAVEL_CLASSES.find(c => c.key === next)
     if (!entry) return
     stopTour()
     travelClass.value = next
-    setBudgetRm(entry.presetRm)
+    const untouched
+      = budgetSen.value === 500_000
+        || TRAVEL_CLASSES.some(c => c.presetRm * 100 === budgetSen.value)
+    if (untouched) setBudgetRm(entry.presetRm)
   }
 
   return { selectedCode, destination, budgetSen, budgetRm, travelClass, select, setBudgetRm, setTravelClass }
