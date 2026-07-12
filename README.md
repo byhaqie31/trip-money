@@ -2,18 +2,19 @@
 
 See what your ringgit is really worth at your destination, using official Bank Negara Malaysia rates.
 
-**Live app:** https://trip-money.pages.dev <!-- update after deploy -->
+**Live app:** https://tripmoney.axelnova.my/
 
 Built for the [PasarAPI Bounty](https://krackeddevs.com/code/bounty/pasarapi-bounty) by Kracked Devs.
 
 ## What it does
 
-Every Malaysian traveller asks two questions before a trip: berapa rate sekarang, and should I change money now or wait? Trip Money answers both in ten seconds.
+Trip Money turns official BNM exchange rates into travel decisions: see where your ringgit is winning, whether today is a good day to change money, and what your budget is worth across 16 destinations.
 
-- Pick a destination and see today's official BNM middle rate with the daily change
-- Enter your trip budget in RM and watch it convert live, with context: what that same budget was worth six months ago
-- A 90 day trend chart that marks the strongest ringgit day in the window
-- Generate a boarding pass style summary card of your trip budget, ready to save and share
+- Pick a destination and see today's official BNM middle rate with the daily change, plus an honest timing signal: "today's rate is better than X% of the last 90 days"
+- Enter your trip budget in RM and watch it convert live, with context: what that same budget was worth months ago, and what it buys everywhere else
+- "Where the ringgit is winning": every destination ranked by how much further your ringgit goes than 30 or 90 days ago
+- A 90 day trend chart marking the strongest ringgit day, plus a distribution of where today sits
+- Pick a traveller class (Backpacker, Traveller, Luxury) and print a boarding pass style summary card, ready to save and share
 
 ## API used
 
